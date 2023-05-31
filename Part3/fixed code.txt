@@ -1,0 +1,16 @@
+fixed code:
+
+d3.csv("yourcsv.csv").then(data => {
+  // Parse the date and convert the usd to a number
+  const parseDate = d3.timeParse("%Y-%m-%d");
+  data.forEach(d => {
+    d.date = parseDate(d.date);
+    d.usd = +d.usd;
+  });
+
+  // Sort the data array by date -- THIS IS THE FIX
+  data.sort((a, b) => a.date - b.date);
+
+
+
+-From DataVizDad
